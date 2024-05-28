@@ -1,0 +1,2 @@
+/usr/bin/ar qc libLayoutManagerExample.a CMakeFiles/LayoutManagerExample.dir/LayoutManagerExample.cpp.o
+/usr/bin/ranlib libLayoutManagerExample.a
