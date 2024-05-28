@@ -27,13 +27,9 @@ jobs:
 
   - name: Build
     run: cmake --build ${{github.workspace}}/build
-
+  
   - name: Run tests
-    run: |
-     ls build
-     cd ${{github.workspace}}/build
-     ls build
-     ctest --output-on-failure || exit 1
+    run: ctest --output-on-failure || exit 1
 
   - name: Build package
     run: cmake --build ${{github.workspace}}/build --target package
