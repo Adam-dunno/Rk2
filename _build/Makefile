@@ -85,16 +85,6 @@ package_source:
 package_source/fast: package_source
 .PHONY : package_source/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -114,51 +104,6 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -192,167 +137,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ConceptualExample01
+# Target rules for targets named program
 
 # Build rule for target.
-ConceptualExample01: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ConceptualExample01
-.PHONY : ConceptualExample01
+program: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 program
+.PHONY : program
 
 # fast build rule for target.
-ConceptualExample01/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample01.dir/build.make CMakeFiles/ConceptualExample01.dir/build
-.PHONY : ConceptualExample01/fast
-
-#=============================================================================
-# Target rules for targets named ConceptualExample02
-
-# Build rule for target.
-ConceptualExample02: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ConceptualExample02
-.PHONY : ConceptualExample02
-
-# fast build rule for target.
-ConceptualExample02/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample02.dir/build.make CMakeFiles/ConceptualExample02.dir/build
-.PHONY : ConceptualExample02/fast
-
-#=============================================================================
-# Target rules for targets named Person
-
-# Build rule for target.
-Person: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Person
-.PHONY : Person
-
-# fast build rule for target.
-Person/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Person.dir/build.make CMakeFiles/Person.dir/build
-.PHONY : Person/fast
-
-#=============================================================================
-# Target rules for targets named PersonBuilder
-
-# Build rule for target.
-PersonBuilder: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PersonBuilder
-.PHONY : PersonBuilder
-
-# fast build rule for target.
-PersonBuilder/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilder.dir/build.make CMakeFiles/PersonBuilder.dir/build
-.PHONY : PersonBuilder/fast
-
-#=============================================================================
-# Target rules for targets named PersonBuilderExample
-
-# Build rule for target.
-PersonBuilderExample: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PersonBuilderExample
-.PHONY : PersonBuilderExample
-
-# fast build rule for target.
-PersonBuilderExample/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilderExample.dir/build.make CMakeFiles/PersonBuilderExample.dir/build
-.PHONY : PersonBuilderExample/fast
-
-#=============================================================================
-# Target rules for targets named LayoutManagerExample
-
-# Build rule for target.
-LayoutManagerExample: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LayoutManagerExample
-.PHONY : LayoutManagerExample
-
-# fast build rule for target.
-LayoutManagerExample/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LayoutManagerExample.dir/build.make CMakeFiles/LayoutManagerExample.dir/build
-.PHONY : LayoutManagerExample/fast
-
-#=============================================================================
-# Target rules for targets named example
-
-# Build rule for target.
-example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example
-.PHONY : example
-
-# fast build rule for target.
-example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/build
-.PHONY : example/fast
-
-#=============================================================================
-# Target rules for targets named runTests
-
-# Build rule for target.
-runTests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 runTests
-.PHONY : runTests
-
-# fast build rule for target.
-runTests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/build
-.PHONY : runTests/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+program/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/build
+.PHONY : program/fast
 
 ConceptualExample01.o: ConceptualExample01.cpp.o
 .PHONY : ConceptualExample01.o
 
 # target to build an object file
 ConceptualExample01.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample01.dir/build.make CMakeFiles/ConceptualExample01.dir/ConceptualExample01.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample01.cpp.o
 .PHONY : ConceptualExample01.cpp.o
 
 ConceptualExample01.i: ConceptualExample01.cpp.i
@@ -360,7 +162,7 @@ ConceptualExample01.i: ConceptualExample01.cpp.i
 
 # target to preprocess a source file
 ConceptualExample01.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample01.dir/build.make CMakeFiles/ConceptualExample01.dir/ConceptualExample01.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample01.cpp.i
 .PHONY : ConceptualExample01.cpp.i
 
 ConceptualExample01.s: ConceptualExample01.cpp.s
@@ -368,7 +170,7 @@ ConceptualExample01.s: ConceptualExample01.cpp.s
 
 # target to generate assembly for a file
 ConceptualExample01.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample01.dir/build.make CMakeFiles/ConceptualExample01.dir/ConceptualExample01.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample01.cpp.s
 .PHONY : ConceptualExample01.cpp.s
 
 ConceptualExample02.o: ConceptualExample02.cpp.o
@@ -376,7 +178,7 @@ ConceptualExample02.o: ConceptualExample02.cpp.o
 
 # target to build an object file
 ConceptualExample02.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample02.dir/build.make CMakeFiles/ConceptualExample02.dir/ConceptualExample02.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample02.cpp.o
 .PHONY : ConceptualExample02.cpp.o
 
 ConceptualExample02.i: ConceptualExample02.cpp.i
@@ -384,7 +186,7 @@ ConceptualExample02.i: ConceptualExample02.cpp.i
 
 # target to preprocess a source file
 ConceptualExample02.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample02.dir/build.make CMakeFiles/ConceptualExample02.dir/ConceptualExample02.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample02.cpp.i
 .PHONY : ConceptualExample02.cpp.i
 
 ConceptualExample02.s: ConceptualExample02.cpp.s
@@ -392,7 +194,7 @@ ConceptualExample02.s: ConceptualExample02.cpp.s
 
 # target to generate assembly for a file
 ConceptualExample02.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ConceptualExample02.dir/build.make CMakeFiles/ConceptualExample02.dir/ConceptualExample02.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/ConceptualExample02.cpp.s
 .PHONY : ConceptualExample02.cpp.s
 
 LayoutManagerExample.o: LayoutManagerExample.cpp.o
@@ -400,7 +202,7 @@ LayoutManagerExample.o: LayoutManagerExample.cpp.o
 
 # target to build an object file
 LayoutManagerExample.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LayoutManagerExample.dir/build.make CMakeFiles/LayoutManagerExample.dir/LayoutManagerExample.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/LayoutManagerExample.cpp.o
 .PHONY : LayoutManagerExample.cpp.o
 
 LayoutManagerExample.i: LayoutManagerExample.cpp.i
@@ -408,7 +210,7 @@ LayoutManagerExample.i: LayoutManagerExample.cpp.i
 
 # target to preprocess a source file
 LayoutManagerExample.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LayoutManagerExample.dir/build.make CMakeFiles/LayoutManagerExample.dir/LayoutManagerExample.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/LayoutManagerExample.cpp.i
 .PHONY : LayoutManagerExample.cpp.i
 
 LayoutManagerExample.s: LayoutManagerExample.cpp.s
@@ -416,7 +218,7 @@ LayoutManagerExample.s: LayoutManagerExample.cpp.s
 
 # target to generate assembly for a file
 LayoutManagerExample.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/LayoutManagerExample.dir/build.make CMakeFiles/LayoutManagerExample.dir/LayoutManagerExample.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/LayoutManagerExample.cpp.s
 .PHONY : LayoutManagerExample.cpp.s
 
 Person.o: Person.cpp.o
@@ -424,7 +226,7 @@ Person.o: Person.cpp.o
 
 # target to build an object file
 Person.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Person.dir/build.make CMakeFiles/Person.dir/Person.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Person.cpp.o
 .PHONY : Person.cpp.o
 
 Person.i: Person.cpp.i
@@ -432,7 +234,7 @@ Person.i: Person.cpp.i
 
 # target to preprocess a source file
 Person.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Person.dir/build.make CMakeFiles/Person.dir/Person.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Person.cpp.i
 .PHONY : Person.cpp.i
 
 Person.s: Person.cpp.s
@@ -440,7 +242,7 @@ Person.s: Person.cpp.s
 
 # target to generate assembly for a file
 Person.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Person.dir/build.make CMakeFiles/Person.dir/Person.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Person.cpp.s
 .PHONY : Person.cpp.s
 
 PersonBuilder.o: PersonBuilder.cpp.o
@@ -448,7 +250,7 @@ PersonBuilder.o: PersonBuilder.cpp.o
 
 # target to build an object file
 PersonBuilder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilder.dir/build.make CMakeFiles/PersonBuilder.dir/PersonBuilder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilder.cpp.o
 .PHONY : PersonBuilder.cpp.o
 
 PersonBuilder.i: PersonBuilder.cpp.i
@@ -456,7 +258,7 @@ PersonBuilder.i: PersonBuilder.cpp.i
 
 # target to preprocess a source file
 PersonBuilder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilder.dir/build.make CMakeFiles/PersonBuilder.dir/PersonBuilder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilder.cpp.i
 .PHONY : PersonBuilder.cpp.i
 
 PersonBuilder.s: PersonBuilder.cpp.s
@@ -464,7 +266,7 @@ PersonBuilder.s: PersonBuilder.cpp.s
 
 # target to generate assembly for a file
 PersonBuilder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilder.dir/build.make CMakeFiles/PersonBuilder.dir/PersonBuilder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilder.cpp.s
 .PHONY : PersonBuilder.cpp.s
 
 PersonBuilderExample.o: PersonBuilderExample.cpp.o
@@ -472,7 +274,7 @@ PersonBuilderExample.o: PersonBuilderExample.cpp.o
 
 # target to build an object file
 PersonBuilderExample.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilderExample.dir/build.make CMakeFiles/PersonBuilderExample.dir/PersonBuilderExample.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilderExample.cpp.o
 .PHONY : PersonBuilderExample.cpp.o
 
 PersonBuilderExample.i: PersonBuilderExample.cpp.i
@@ -480,7 +282,7 @@ PersonBuilderExample.i: PersonBuilderExample.cpp.i
 
 # target to preprocess a source file
 PersonBuilderExample.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilderExample.dir/build.make CMakeFiles/PersonBuilderExample.dir/PersonBuilderExample.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilderExample.cpp.i
 .PHONY : PersonBuilderExample.cpp.i
 
 PersonBuilderExample.s: PersonBuilderExample.cpp.s
@@ -488,7 +290,7 @@ PersonBuilderExample.s: PersonBuilderExample.cpp.s
 
 # target to generate assembly for a file
 PersonBuilderExample.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PersonBuilderExample.dir/build.make CMakeFiles/PersonBuilderExample.dir/PersonBuilderExample.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/PersonBuilderExample.cpp.s
 .PHONY : PersonBuilderExample.cpp.s
 
 Program.o: Program.cpp.o
@@ -496,7 +298,7 @@ Program.o: Program.cpp.o
 
 # target to build an object file
 Program.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/Program.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Program.cpp.o
 .PHONY : Program.cpp.o
 
 Program.i: Program.cpp.i
@@ -504,7 +306,7 @@ Program.i: Program.cpp.i
 
 # target to preprocess a source file
 Program.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/Program.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Program.cpp.i
 .PHONY : Program.cpp.i
 
 Program.s: Program.cpp.s
@@ -512,32 +314,8 @@ Program.s: Program.cpp.s
 
 # target to generate assembly for a file
 Program.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/example.dir/build.make CMakeFiles/example.dir/Program.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/Program.cpp.s
 .PHONY : Program.cpp.s
-
-Testy.o: Testy.cpp.o
-.PHONY : Testy.o
-
-# target to build an object file
-Testy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/Testy.cpp.o
-.PHONY : Testy.cpp.o
-
-Testy.i: Testy.cpp.i
-.PHONY : Testy.i
-
-# target to preprocess a source file
-Testy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/Testy.cpp.i
-.PHONY : Testy.cpp.i
-
-Testy.s: Testy.cpp.s
-.PHONY : Testy.s
-
-# target to generate assembly for a file
-Testy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/Testy.cpp.s
-.PHONY : Testy.cpp.s
 
 # Help Target
 help:
@@ -546,26 +324,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
 	@echo "... package"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... ConceptualExample01"
-	@echo "... ConceptualExample02"
-	@echo "... LayoutManagerExample"
-	@echo "... Person"
-	@echo "... PersonBuilder"
-	@echo "... PersonBuilderExample"
-	@echo "... example"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
-	@echo "... runTests"
+	@echo "... program"
 	@echo "... ConceptualExample01.o"
 	@echo "... ConceptualExample01.i"
 	@echo "... ConceptualExample01.s"
@@ -587,9 +349,6 @@ help:
 	@echo "... Program.o"
 	@echo "... Program.i"
 	@echo "... Program.s"
-	@echo "... Testy.o"
-	@echo "... Testy.i"
-	@echo "... Testy.s"
 .PHONY : help
 
 

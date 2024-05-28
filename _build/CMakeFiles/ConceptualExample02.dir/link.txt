@@ -1,2 +1,0 @@
-/usr/bin/ar qc libConceptualExample02.a CMakeFiles/ConceptualExample02.dir/ConceptualExample02.cpp.o
-/usr/bin/ranlib libConceptualExample02.a

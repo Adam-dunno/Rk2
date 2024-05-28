@@ -1,2 +1,0 @@
-/usr/bin/ar qc libPersonBuilderExample.a CMakeFiles/PersonBuilderExample.dir/PersonBuilderExample.cpp.o
-/usr/bin/ranlib libPersonBuilderExample.a
